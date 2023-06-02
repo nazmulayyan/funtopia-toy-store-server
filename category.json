@@ -1,0 +1,224 @@
+{
+    "mammals": [
+        {
+            "picture": "https://shorturl.at/knrOZ",
+            "name": "Plush Tiger",
+            "price": "$19.99",
+            "rating": 4.5,
+            "seller": "Toy World",
+            "subcategory": "Mammals"
+        },
+        {
+            "picture": "https://shorturl.at/dfhLT",
+            "name": "Stuffed Elephant",
+            "price": "$14.99",
+            "rating": 4.2,
+            "seller": "Fun Toys",
+            "subcategory": "Mammals"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_35030100-02e50f02.png",
+            "name": "Fluffy Panda",
+            "price": "$17.50",
+            "rating": 4.3,
+            "seller": "Cute Creations",
+            "subcategory": "Mammals"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_32400000-025b0002.png",
+            "name": "Soft Bunny",
+            "price": "$12.99",
+            "rating": 4.6,
+            "seller": "Snuggly Toys",
+            "subcategory": "Mammals"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_32400100-03640002.png",
+            "name": "Furry Koala",
+            "price": "$16.99",
+            "rating": 4.8,
+            "seller": "Cozy Companions",
+            "subcategory": "Mammals"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01920000-02470502.png",
+            "name": "Velvet Monkey",
+            "price": "$11.99",
+            "rating": 4.1,
+            "seller": "Playful Pals",
+            "subcategory": "Mammals"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01410000-035c0902.png",
+            "name": "Cuddly Bear",
+            "price": "$13.99",
+            "rating": 4.7,
+            "seller": "Hug 'n' Joy",
+            "subcategory": "Mammals"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00170000-02680102.png",
+            "name": "Snuggly Squirrel",
+            "price": "$9.99",
+            "rating": 4.4,
+            "seller": "Happy Critters",
+            "subcategory": "Mammals"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00050000-00140002.png",
+            "name": "Fluffy Fox",
+            "price": "$15.99",
+            "rating": 4.9,
+            "seller": "Whiskered Wonders",
+            "subcategory": "Mammals"
+        }
+    ],
+    "birds": [
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00050000-00390102.png",
+            "name": "Wooden Parrot",
+            "price": "$12.99",
+            "rating": 4.0,
+            "seller": "Kids' Corner",
+            "subcategory": "Birds"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00050000-03730102.png",
+            "name": "Feathered Owl",
+            "price": "$9.99",
+            "rating": 3.8,
+            "seller": "Happy Toys",
+            "subcategory": "Birds"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00060000-00150002.png",
+            "name": "Colorful Parakeet",
+            "price": "$14.50",
+            "rating": 4.2,
+            "seller": "Avian Delights",
+            "subcategory": "Birds"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_210b0000-03a50002.png",
+            "name": "Elegant Swan",
+            "price": "$17.99",
+            "rating": 4.6,
+            "seller": "Graceful Feathers",
+            "subcategory": "Birds"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_08010000-025d0402.png",
+            "name": "Majestic Eagle",
+            "price": "$19.99",
+            "rating": 4.8,
+            "seller": "Soaring Heights",
+            "subcategory": "Birds"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_06000000-00120002.png",
+            "name": "Tweeting Canary",
+            "price": "$7.99",
+            "rating": 4.1,
+            "seller": "Cheerful Chirps",
+            "subcategory": "Birds"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01930000-02480502.png",
+            "name": "Whistling Finch",
+            "price": "$6.99",
+            "rating": 3.9,
+            "seller": "Melodious Tunes",
+            "subcategory": "Birds"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_21070000-03611202.png",
+            "name": "Perky Hummingbird",
+            "price": "$9.50",
+            "rating": 4.3,
+            "seller": "Buzzing Wings",
+            "subcategory": "Birds"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_19060000-00240002.png",
+            "name": "Gorgeous Peacock",
+            "price": "$24.99",
+            "rating": 4.7,
+            "seller": "Vibrant Plumage",
+            "subcategory": "Birds"
+        }
+    ],
+    "reptiles": [
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_21080000-036f1202.png",
+            "name": "Plastic Snake",
+            "price": "$7.99",
+            "rating": 3.5,
+            "seller": "Toy Universe",
+            "subcategory": "Reptiles"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_21080000-03880002.png",
+            "name": "Rubber Lizard",
+            "price": "$6.99",
+            "rating": 3.2,
+            "seller": "Playtime Emporium",
+            "subcategory": "Reptiles"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_36000000-02590002.png",
+            "name": "Green Iguana",
+            "price": "$9.50",
+            "rating": 4.1,
+            "seller": "Reptile Haven",
+            "subcategory": "Reptiles"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_36000100-03620002.png",
+            "name": "Turtle Hatchling",
+            "price": "$5.99",
+            "rating": 3.7,
+            "seller": "Aquatic Pets",
+            "subcategory": "Reptiles"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_21050000-025a0002.png",
+            "name": "Chameleon",
+            "price": "$12.99",
+            "rating": 4.4,
+            "seller": "Colorful Critters",
+            "subcategory": "Reptiles"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_21050000-025a0002.png",
+            "name": "Gecko",
+            "price": "$8.99",
+            "rating": 3.9,
+            "seller": "Sunny Scales",
+            "subcategory": "Reptiles"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_018b0000-02460502.png",
+            "name": "Bearded Dragon",
+            "price": "$15.99",
+            "rating": 4.6,
+            "seller": "Desert Dweller",
+            "subcategory": "Reptiles"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00130000-02660102.png",
+            "name": "Crocodile",
+            "price": "$11.99",
+            "rating": 4.3,
+            "seller": "Jungle Exotics",
+            "subcategory": "Reptiles"
+        },
+        {
+            "picture": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00130000-037a0002.png",
+            "name": "Tortoise",
+            "price": "$19.99",
+            "rating": 4.8,
+            "seller": "Slow and Steady",
+            "subcategory": "Reptiles"
+        }
+    ]
+}
