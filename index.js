@@ -17,75 +17,128 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
 });
 
 async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+    try {
+        // Connect the client to the server	(optional starting in v4.7)
+        await client.connect();
 
-   
+        const toyCollection = client.db('funtopiaToys').collection('toys');
 
-    //add a new toy
-    const addToyCollection = client.db('funtopiaToys').collection('toys');
 
-    app.get('/addToy', async(req, res) =>{
-        const cursor = addToyCollection.find();
-        const result = await cursor.toArray();
-        res.send(result);
-    })
+        //add a new toy
+        const addToyCollection = client.db('funtopiaToys').collection('toys');
 
-    // app.get('/addToy/:id', async (req,res) =>{
-    //     const id =  req.params.id;
-    //     const query = {_id: new ObjectId (id)};
-    //     const toyDetails = await addToyCollection.findOne(query);
-    //     res.send(toyDetails)
-    // })
+        app.get('/addToy', async (req, res) => {
+            const cursor = addToyCollection.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
 
-    app.post('/addToy', async(req, res)=>{
-        const addNewToy = req.body;
-        console.log(addNewToy);
-        const result = await addToyCollection.insertOne(addNewToy);
-        res.send(result);
-    })
+        // app.get('/addToy/:id', async (req,res) =>{
+        //     const id =  req.params.id;
+        //     const query = {_id: new ObjectId (id)};
+        //     const toyDetails = await addToyCollection.findOne(query);
+        //     res.send(toyDetails)
+        // })
 
-    //blogs data fetch
-    const blogCollection = client.db('funtopiaToys').collection('blogs');
+        app.post('/addToy', async (req, res) => {
+            const addNewToy = req.body;
+            // console.log(addNewToy);
+            const result = await addToyCollection.insertOne(addNewToy);
+            res.send(result);
+        })
 
-    app.get('/blogs', async(req, res)=>{
-        const cursor = blogCollection.find();
-        const result = await cursor.toArray();
-        res.send(result);
-    })
+        //delete toy 
+        app.delete('/toys/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await toyCollection.deleteOne(query);
+            res.send(result);
+        })
 
-    // category data fetch
-    const toyCollection = client.db('funtopiaToys').collection('toys');
+        //get single toy
+        app.get('/toys/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await toyCollection.findOne(query);
+            res.send(result);
+        })
 
-    app.get('/toys', async(req, res)=>{
-        const cursor = toyCollection.find();
-        const result = await cursor.toArray();
-        res.send(result);
-    })
+        //update the toy 
+        app.put('/toys/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) }
+            const options = { upsert: true };
+            const updatedToy = req.body;
+            const toy = {
+                $set: {
+                    name: updatedToy.name,
+                    photoUrl: updatedToy.photoURL,
+                    sellerName: updatedToy.sellerName,
+                    sellerEmail: updatedToy.sellerEmail,
+                    subcategory: updatedToy.subcategory,
+                    price: updatedToy.price,
+                    rating: updatedToy.rating,
+                    quantity: updatedToy.quantity,
+                    description: updatedToy.description
+                }
+            }
+            const result = await toyCollection.updateOne(filter, toy, options);
+            res.send(result);
+        })
 
-    app.get('/toys/:id', async (req,res) =>{
-        const id =  req.params.id;
-        const query = {_id: new ObjectId (id)};
-        const toyDetails = await toyCollection.findOne(query);
-        res.send(toyDetails)
-    })
+        //my toys
+        app.get('/myToy/:email', async (req, res) => {
+            const email = req.params?.email
+            const query = {sellerEmail:email}
+            if (query) {
+                console.log(query)
+                const result = await toyCollection.find(query).toArray();
+                console.log(result);
+                res.send(result)
+            }
 
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    // await client.close();
-  }
+        })
+
+        //blogs data fetch
+        const blogCollection = client.db('funtopiaToys').collection('blogs');
+
+        app.get('/blogs', async (req, res) => {
+            const cursor = blogCollection.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+
+        // category data fetch
+
+
+        app.get('/toys', async (req, res) => {
+            const cursor = toyCollection.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+
+        app.get('/toys/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const toyDetails = await toyCollection.findOne(query);
+            res.send(toyDetails)
+        })
+
+        // Send a ping to confirm a successful connection
+        await client.db("admin").command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    } finally {
+        // Ensures that the client will close when you finish/error
+        // await client.close();
+    }
 }
 run().catch(console.dir);
 
@@ -94,10 +147,10 @@ run().catch(console.dir);
 ------------*/
 
 
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.send('Have fun with your toys')
 })
 
-app.listen(port, () =>{
+app.listen(port, () => {
     console.log(`toys server is running on port ${port}`);
 })
