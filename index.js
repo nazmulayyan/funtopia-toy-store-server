@@ -94,6 +94,7 @@ async function run() {
             res.send(result);
         })
 
+
         //my toys
         app.get('/myToy/:email', async (req, res) => {
             const email = req.params?.email
@@ -104,8 +105,46 @@ async function run() {
                 console.log(result);
                 res.send(result)
             }
-
         })
+        
+        //search 
+        app.get('/toys', async (req, res) => {
+            const searchQuery = req.query.search;
+            const priceQuery = parseFloat(searchQuery); // Parse the search query as a floating-point number
+            
+            let filter;
+            if (!isNaN(priceQuery)) {
+                // If the search query is a valid number, search for toys with price greater than or equal to the query
+                filter = { price: { $gte: priceQuery } };
+            } else {
+                // If the search query is not a valid number, search for toys based on the name
+                const regexQuery = new RegExp(searchQuery, 'i');
+                filter = { name: regexQuery };
+            }
+          
+            const cursor = toyCollection.find(filter);
+            const result = await cursor.toArray();
+            res.send(result);
+        });
+               
+
+        //ascending and descending 
+        app.get('/toys', async (req, res) => {
+            const { sort } = req.query;
+            let sortOption = {};
+        
+            if (sort === 'asc') {
+                sortOption = { price: 1 };
+            } else if (sort === 'desc') {
+                sortOption = { price: -1 };
+            }
+        
+            const cursor = toyCollection.find().sort(sortOption);
+            const result = await cursor.toArray();
+            res.send(result);
+        });
+        
+        
 
         //blogs data fetch
         const blogCollection = client.db('funtopiaToys').collection('blogs');
