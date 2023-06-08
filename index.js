@@ -5,7 +5,6 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-
 //middleware
 app.use(cors());
 app.use(express.json());
@@ -30,7 +29,6 @@ async function run() {
         await client.connect();
 
         const toyCollection = client.db('funtopiaToys').collection('toys');
-
 
         //add a new toy
         const addToyCollection = client.db('funtopiaToys').collection('toys');
@@ -100,7 +98,7 @@ async function run() {
             }
         })
 
-        //search 
+        //search functionality 
         app.get('/toys', async (req, res) => {
             const searchQuery = req.query.search;
             const priceQuery = parseFloat(searchQuery); // Parse the search query as a floating-point number
@@ -120,9 +118,6 @@ async function run() {
             res.send(result);
         });
         
-
-               
-
         //ascending and descending 
         app.get('/toys', async (req, res) => {
             const { sort } = req.query;
@@ -139,8 +134,6 @@ async function run() {
             res.send(result);
         });
         
-        
-
         //blogs data fetch
         const blogCollection = client.db('funtopiaToys').collection('blogs');
 
@@ -151,14 +144,13 @@ async function run() {
         })
 
         // category data fetch
-
-
         app.get('/toys', async (req, res) => {
             const cursor = toyCollection.find();
             const result = await cursor.toArray();
             res.send(result);
         })
 
+        //toy details
         app.get('/toys/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
@@ -179,7 +171,6 @@ run().catch(console.dir);
 /*-----------
     mongodb
 ------------*/
-
 
 app.get('/', (req, res) => {
     res.send('Have fun with your toys')
