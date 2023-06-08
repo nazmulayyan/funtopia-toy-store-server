@@ -41,16 +41,9 @@ async function run() {
             res.send(result);
         })
 
-        // app.get('/addToy/:id', async (req,res) =>{
-        //     const id =  req.params.id;
-        //     const query = {_id: new ObjectId (id)};
-        //     const toyDetails = await addToyCollection.findOne(query);
-        //     res.send(toyDetails)
-        // })
-
+        //add a toy
         app.post('/addToy', async (req, res) => {
             const addNewToy = req.body;
-            // console.log(addNewToy);
             const result = await addToyCollection.insertOne(addNewToy);
             res.send(result);
         })
@@ -106,7 +99,7 @@ async function run() {
                 res.send(result)
             }
         })
-        
+
         //search 
         app.get('/toys', async (req, res) => {
             const searchQuery = req.query.search;
@@ -122,10 +115,12 @@ async function run() {
                 filter = { name: regexQuery };
             }
           
-            const cursor = toyCollection.find(filter);
+            const cursor = toyCollection.find(filter).limit(20); // Limit the number of results to 20
             const result = await cursor.toArray();
             res.send(result);
         });
+        
+
                
 
         //ascending and descending 
