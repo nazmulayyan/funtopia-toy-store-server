@@ -93,7 +93,7 @@ async function run() {
         })
 
         //my toys
-        app.get('/myToy/:email', async (req, res) => {
+        app.get('/toys/:email', async (req, res) => {
             const email = req.params?.email
             const query = { sellerEmail: email }
             if (query) {
