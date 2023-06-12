@@ -6,7 +6,14 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 //middleware
-app.use(cors());
+const corsConfig = {
+    origin: '',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}
+app.use(cors(corsConfig))
+app.options("", cors(corsConfig))
+
 app.use(express.json());
 
 /*-----------
@@ -88,7 +95,7 @@ async function run() {
         //my toys
         app.get('/myToy/:email', async (req, res) => {
             const email = req.params?.email
-            const query = {sellerEmail:email}
+            const query = { sellerEmail: email }
             if (query) {
                 console.log(query)
                 const result = await toyCollection.find(query).toArray();
@@ -101,7 +108,7 @@ async function run() {
         app.get('/toys', async (req, res) => {
             const searchQuery = req.query.search;
             const priceQuery = parseFloat(searchQuery); // Parse the search query as a floating-point number
-            
+
             let filter;
             if (!isNaN(priceQuery)) {
                 // If the search query is a valid number, search for toys with price greater than or equal to the query
@@ -111,28 +118,28 @@ async function run() {
                 const regexQuery = new RegExp(searchQuery, 'i');
                 filter = { name: regexQuery };
             }
-          
+
             const cursor = toyCollection.find(filter).limit(20); // Limit the number of results to 20
             const result = await cursor.toArray();
             res.send(result);
         });
-        
+
         //ascending and descending 
         app.get('/toys', async (req, res) => {
             const { sort } = req.query;
             let sortOption = {};
-        
+
             if (sort === 'asc') {
                 sortOption = { price: 1 };
             } else if (sort === 'desc') {
                 sortOption = { price: -1 };
             }
-        
+
             const cursor = toyCollection.find().sort(sortOption);
             const result = await cursor.toArray();
             res.send(result);
         });
-        
+
         //blogs data fetch
         const blogCollection = client.db('funtopiaToys').collection('blogs');
 
